@@ -2,6 +2,7 @@
 This is a **E-Commerce Backend** built using Node.js, Express, and MongoDB.  
 
 ---
+
 ##  Features
 ### 🔐 Authentication & Authorization
 - Register with email confirmation  
@@ -23,7 +24,8 @@ This is a **E-Commerce Backend** built using Node.js, Express, and MongoDB.
 
 ### 📦 Orders
 - User can place orders from their cart  
-- Admin can manage all orders (**CRUD, status update**)  
+- Admin can manage all orders (**CRUD, status update**)
+  
 ---
 
 ## Admin Setup
@@ -80,6 +82,3 @@ This is a **E-Commerce Backend** built using Node.js, Express, and MongoDB.
 - PUT /order/:id (admin only) → Update order status
 
 - DELETE /order/:id (admin only) → Delete order
-
- 
-
