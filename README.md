@@ -2,12 +2,7 @@
 This is a **E-Commerce Backend** built using Node.js, Express, and MongoDB.  
 
 ---
-# Admin Setup
 
-- Register normally as a user.
-- In MongoDB, set this user’s role to admin and isConfirmed to true.
-  
----
 
 ##  Features
 ### 🔐 Authentication & Authorization
@@ -31,6 +26,12 @@ This is a **E-Commerce Backend** built using Node.js, Express, and MongoDB.
 ### 📦 Orders
 - User can place orders from their cart  
 - Admin can manage all orders (**CRUD, status update**)  
+---
+
+# Admin Setup
+- Register normally as a user.
+- In MongoDB, set this user’s role to admin and isConfirmed to true.
+  
 ---
 
 ##  API Endpoints
