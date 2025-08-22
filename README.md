@@ -1,5 +1,5 @@
 #  E-Commerce Project
-This is a ** E-Commerce Backend ** built using Node.js, Express, and MongoDB.  
+This is a **E-Commerce Backend** built using Node.js, Express, and MongoDB.  
 
 ---
 
@@ -15,7 +15,7 @@ This is a ** E-Commerce Backend ** built using Node.js, Express, and MongoDB.
 ---
 
 ##  API Endpoints
- Auth
+ **Auth**
 
 - POST /user → Register
 
@@ -23,7 +23,7 @@ This is a ** E-Commerce Backend ** built using Node.js, Express, and MongoDB.
 
 - GET /user/verify/:emailToken → Verify account
 
- Users
+ **Users**
 
 - GET /user (admin only) → Get all users
 
@@ -31,7 +31,7 @@ This is a ** E-Commerce Backend ** built using Node.js, Express, and MongoDB.
 
 - DELETE /user/:id → Delete user (self or admin)
 
-Products
+**Products**
 
 - GET /product → Get all products
 
@@ -41,7 +41,7 @@ Products
 
 - DELETE /product/:id (admin only) → Delete product
 
-Cart
+**Cart**
 
 - POST /cart → Add product to cart
 
@@ -51,7 +51,7 @@ Cart
 
 - DELETE /cart/:id → Remove cart item
 
-Orders
+**Orders**
 
 - POST /order → Create order from cart
 
