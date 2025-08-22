@@ -66,8 +66,5 @@ Orders
  # Admin Setup
 
 - Register normally as a user.
-- In MongoDB, set this user’s role to admin and isConfirmed: true:
-{
-  "role": "admin",
-  "isConfirmed": true
-}
+- In MongoDB, set this user’s role to admin and isConfirmed to true:
+
