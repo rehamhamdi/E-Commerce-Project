@@ -15,7 +15,7 @@ This is a **E-Commerce Backend ** built using Node.js, Express, and MongoDB.
 ---
 
 ##  API Endpoints
-** Auth
+ Auth
 
 - POST /user → Register
 
@@ -25,40 +25,49 @@ This is a **E-Commerce Backend ** built using Node.js, Express, and MongoDB.
 
 Users
 
-GET /user (admin only) → Get all users
+- GET /user (admin only) → Get all users
 
-PUT /user/:id → Update user (self or admin)
+- PUT /user/:id → Update user (self or admin)
 
-DELETE /user/:id → Delete user (self or admin)
+- DELETE /user/:id → Delete user (self or admin)
 
 Products
 
-GET /product → Get all products
+- GET /product → Get all products
 
-POST /product (admin only) → Add product
+- POST /product (admin only) → Add product
 
-PUT /product/:id (admin only) → Update product
+- PUT /product/:id (admin only) → Update product
 
-DELETE /product/:id (admin only) → Delete product
+- DELETE /product/:id (admin only) → Delete product
 
 Cart
 
-POST /cart → Add product to cart
+- POST /cart → Add product to cart
 
-GET /cart → Get user cart
+- GET /cart → Get user cart
 
-PUT /cart/:id → Update cart item
+- PUT /cart/:id → Update cart item
 
-DELETE /cart/:id → Remove cart item
+- DELETE /cart/:id → Remove cart item
 
 Orders
 
-POST /order → Create order from cart
+- POST /order → Create order from cart
 
-GET /order → Get my orders
+- GET /order → Get my orders
 
-GET /orders (admin only) → Get all orders
+- GET /orders (admin only) → Get all orders
 
-PUT /order/:id (admin only) → Update order status
+- PUT /order/:id (admin only) → Update order status
 
-DELETE /order/:id (admin only) → Delete order
+- DELETE /order/:id (admin only) → Delete order
+
+ # Admin Setup
+
+- Register normally as a user.
+- In MongoDB, set this user’s role to admin and isConfirmed: true:
+{
+  "role": "admin",
+  "isConfirmed": true
+}
