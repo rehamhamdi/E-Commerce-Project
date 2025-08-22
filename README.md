@@ -10,7 +10,7 @@ This is a **E-Commerce Backend ** built using Node.js, Express, and MongoDB.
 - Product management
 - Cart management
 - Order creation
-- MongoDB with Mongoose ODM
+- MongoDB with Mongoose 
 
 ---
 
