@@ -1,5 +1,5 @@
 #  E-Commerce Project
-This is a **E-Commerce Backend ** built using Node.js, Express, and MongoDB.  
+This is a ** E-Commerce Backend ** built using Node.js, Express, and MongoDB.  
 
 ---
 
