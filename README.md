@@ -15,7 +15,7 @@ This is a **E-Commerce Backend ** built using Node.js, Express, and MongoDB.
 ---
 
 ##  API Endpoints
-* Auth
+** Auth
 
 - POST /user → Register
 
