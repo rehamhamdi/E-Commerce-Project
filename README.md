@@ -66,5 +66,5 @@ This is a **E-Commerce Backend** built using Node.js, Express, and MongoDB.
  # Admin Setup
 
 - Register normally as a user.
-- In MongoDB, set this user’s role to admin and isConfirmed to true:
+- In MongoDB, set this user’s role to admin and isConfirmed to true.
 
