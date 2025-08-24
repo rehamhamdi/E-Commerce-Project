@@ -7,18 +7,21 @@ const addToCart = async (req, res) => {
     const product = await productModel.findById(productId);
     if (product) {
       await cartModel.insertOne(req.body);
-      res.json({ Message: "product Added to your cart" });
+      res.status(201).json({ Message: "product Added to your cart" });
     } else {
-      res.json({ Message: "can't find product" });
+      res.status(404).json({ Message: "can't find product" });
     }
   } else {
-    res.json({ Message: "can't find cart" });
+    res.status(403).json({ Message: "can't find cart" });
   }
 };
 
 const getCart = async (req, res) => {
   const cart = await cartModel.find({ userId: req.decoded.id });
-  res.json({ Message: "Your cart", cart });
+  if (!cart.length) {
+    return res.json({ Message: "Your cart is empty" }); 
+  }
+  res.status(200).json({ Message: "Your cart", cart });
 };
 
 const updateCartItem = async (req, res) => {
@@ -31,10 +34,10 @@ const updateCartItem = async (req, res) => {
       { quantity },
       { new: true }
     );
-    if (!updated) return res.json({ Message: "can't find cart" });
-    res.json({ Message: "Updated Successfully", updated });
+    if (!updated) return res.status(404).json({ Message: "can't find cart" });
+    res.status(200).json({ Message: "Updated Successfully", updated });
   } else {
-    res.json({ Message: "can't find product" });
+    res.status(404).json({ Message: "can't find product" });
   }
 };
 
@@ -44,8 +47,8 @@ const deleteCartItem = async (req, res) => {
     _id: req.params.id,
     userId,
   });
-  if (!deleted) return res.json({ Message: "can't find cart" });
-  res.json({ Message: "Deleted Successfully", deleted });
+  if (!deleted) return res.status(404).json({ Message: "can't find cart" });
+  res.status(200).json({ Message: "Deleted Successfully", deleted });
 };
 
 export { addToCart, getCart, updateCartItem, deleteCartItem };

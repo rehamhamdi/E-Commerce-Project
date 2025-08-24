@@ -8,7 +8,7 @@ const createOrder = async (req, res) => {
     const { address } = req.body;
 
     const cart = await cartModel.find({ userId });
-    if (!cart.length) return res.json({ Message: "Cart is empty" });
+    if (!cart.length) return res.status(400).json({ Message: "Cart is empty" });
 
     let totalPrice = 0;
     for (let item of cart) {
@@ -27,38 +27,38 @@ const createOrder = async (req, res) => {
 
     // Clear cart after order
     await cartModel.deleteMany({ userId });
-    res.json({ Message: "Order created successfully", order });
+    res.status(201).json({ Message: "Order created successfully", order });
   
 };
 
 const getMyOrders = async (req, res) => {
   const orders = await orderModel.find({ userId: req.decoded.id }).populate("cartItems.productId");
-  res.json({ Message: "Your orders", orders });
+  res.status(200).json({ Message: "Your orders", orders });
 };
 
 const getAllOrders = async (req, res) => {
-  if (req.decoded.role !== "admin") return res.json({ Message: "Not allowed" });
+  if (req.decoded.role !== "admin") return res.status(403).json({ Message: "Not allowed" });
   const orders = await orderModel.find().populate("userId").populate("cartItems.productId");
-  res.json({ Message: "All orders", orders });
+  res.status(200).json({ Message: "All orders", orders });
 };
 
 const updateOrderStatus = async (req, res) => {
-  if (req.decoded.role !== "admin") return res.json({ Message: "Not allowed" });
+  if (req.decoded.role !== "admin") return res.status(403).json({ Message: "Not allowed" });
   const { id } = req.params;
   const { status } = req.body;
   const updated = await orderModel.findByIdAndUpdate(id, { status }, { new: true });
-  if (!updated) return res.json({ Message: "Order not found" });
+  if (!updated) return res.status(404).json({ Message: "Order not found" });
 
-  res.json({ Message: "Order status updated", updated });
+  res.status(200).json({ Message: "Order status updated", updated });
 };
 
 const deleteOrder = async (req, res) => {
-  if (req.decoded.role !== "admin") return res.json({ Message: "Not allowed" });
+  if (req.decoded.role !== "admin") return res.status(403).json({ Message: "Not allowed" });
   const { id } = req.params;
   const deleted = await orderModel.findByIdAndDelete(id);
-  if (!deleted) return res.json({ Message: "Order not found" });
+  if (!deleted) return res.status(404).json({ Message: "Order not found" });
 
-  res.json({ Message: "Order deleted successfully", deleted });
+  res.status(200).json({ Message: "Order deleted successfully", deleted });
 };
 
 export { createOrder, getMyOrders, getAllOrders, updateOrderStatus ,deleteOrder};
