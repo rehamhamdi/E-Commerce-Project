@@ -4,25 +4,22 @@ This is a **E-Commerce Backend** built using Node.js, Express, and MongoDB.
 ---
 
 ##  Features
-### 🔐 Authentication & Authorization
+###  Authentication & Authorization
 - Register with email confirmation  
-- Login with JWT  
+- Login with JWT
+- Passwords are hashed for security
 - Roles: **User** and **Admin**
-
-### 👤 Users
+###  Users
 - Register, Login, Update, Delete  
 - Email confirmation required  
 - Admin can view all users  
-
-### 🛍️ Products
+###  Products
 - CRUD operations by **Admin only**  
 - List all products (public)  
-
-### 🛒 Cart
+###  Cart
 - Each user has a personal cart  
 - Add / Update / Remove items  
-
-### 📦 Orders
+###  Orders
 - User can place orders from their cart  
 - Admin can manage all orders (**CRUD, status update**)
   
@@ -35,15 +32,13 @@ This is a **E-Commerce Backend** built using Node.js, Express, and MongoDB.
 ---
 
 ##  API Endpoints
- **Auth**
+ **Users**
 
 - POST /user → Register
 
 - POST /userLogin → Login
 
 - GET /user/verify/:emailToken → Verify account
-
- **Users**
 
 - GET /user (admin only) → Get all users
 
@@ -61,7 +56,7 @@ This is a **E-Commerce Backend** built using Node.js, Express, and MongoDB.
 
 - DELETE /product/:id (admin only) → Delete product
 
-**Cart**
+ **Cart**
 
 - POST /cart → Add product to cart
 
@@ -71,7 +66,7 @@ This is a **E-Commerce Backend** built using Node.js, Express, and MongoDB.
 
 - DELETE /cart/:id → Remove cart item
 
-**Orders**
+ **Orders** 
 
 - POST /order → Create order from cart
 
