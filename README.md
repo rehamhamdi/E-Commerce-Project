@@ -35,15 +35,13 @@ This is a **E-Commerce Backend** built using Node.js, Express, and MongoDB.
 ---
 
 ##  API Endpoints
- **Auth**
+ **Users**
 
 - POST /user → Register
 
 - POST /userLogin → Login
 
 - GET /user/verify/:emailToken → Verify account
-
-  **Users**
 
 - GET /user (admin only) → Get all users
 
@@ -61,7 +59,7 @@ This is a **E-Commerce Backend** built using Node.js, Express, and MongoDB.
 
 - DELETE /product/:id (admin only) → Delete product
 
-< **Cart**
+ **Cart**
 
 - POST /cart → Add product to cart
 
@@ -71,7 +69,7 @@ This is a **E-Commerce Backend** built using Node.js, Express, and MongoDB.
 
 - DELETE /cart/:id → Remove cart item
 
-> **Orders** >
+ **Orders** 
 
 - POST /order → Create order from cart
 
