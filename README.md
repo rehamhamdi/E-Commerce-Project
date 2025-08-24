@@ -8,6 +8,7 @@ This is a **E-Commerce Backend** built using Node.js, Express, and MongoDB.
 - Register with email confirmation  
 - Login with JWT  
 - Roles: **User** and **Admin**
+- Passwords are hashed for security
 
 ### 👤 Users
 - Register, Login, Update, Delete  
