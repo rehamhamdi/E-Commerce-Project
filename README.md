@@ -71,7 +71,7 @@ This is a **E-Commerce Backend** built using Node.js, Express, and MongoDB.
 
 - DELETE /cart/:id → Remove cart item
 
-**Orders**
+> **Orders**
 
 - POST /order → Create order from cart
 
