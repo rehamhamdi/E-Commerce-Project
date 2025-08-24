@@ -43,9 +43,9 @@ This is a **E-Commerce Backend** built using Node.js, Express, and MongoDB.
 
 - GET /user/verify/:emailToken → Verify account
 
- - **Users**
+  **Users**
 
--- GET /user (admin only) → Get all users
+- GET /user (admin only) → Get all users
 
 - PUT /user/:id → Update user (self or admin)
 
