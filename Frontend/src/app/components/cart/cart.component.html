@@ -1,0 +1,93 @@
+<div class="container mt-5 mb-5">
+  <div class="card shadow-lg border-0 rounded-4">
+    <div class="card-body p-4">
+      <!-- Heading -->
+      <h2 class="fw-bold text-center mb-4 text-dark">🛒 Your Shopping Cart</h2>
+
+      <!-- Error & Success Messages -->
+      @if (errorMessage) {
+        <div class="alert alert-danger text-center">{{ errorMessage }}</div>
+      }
+      @if (successMessage) {
+        <div class="alert alert-success text-center">{{ successMessage }}</div>
+      }
+
+      <!-- Empty Cart -->
+      @if (cart.items.length === 0) {
+        <div class="text-center p-4">
+          <p class="text-muted fs-5">Your cart is empty.</p>
+          <a routerLink="/products" class="btn btn-outline-primary mt-2">Continue Shopping</a>
+        </div>
+      } @else {
+        <!-- Table -->
+        <div class="table-responsive">
+          <table class="table align-middle table-hover text-center">
+            <thead class="table-dark">
+              <tr>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (item of cart.items; track item._id) {
+                <tr>
+                  <!-- Product Image -->
+                  <td>
+                    @if (item.product && item.product.image) {
+                      <img [src]="item.product.image" [alt]="item.product.name"
+                        class="rounded shadow-sm"
+                        style="width: 60px; height: 60px; object-fit: cover;">
+                    } @else {
+                      <div class="d-flex align-items-center justify-content-center bg-light text-muted rounded"
+                           style="width: 60px; height: 60px;">
+                        No Image
+                      </div>
+                    }
+                  </td>
+
+                  <!-- Name -->
+                  <td class="fw-semibold">{{ item.product?.name || 'Unknown Product' }}</td>
+
+                  <!-- Price -->
+                  <td class="text-success fw-bold">${{ item.product?.price || 0 }}</td>
+
+                  <!-- Quantity -->
+                  <td style="width: 120px;">
+                    <input type="number" min="1" [value]="item.quantity"
+                           class="form-control form-control-sm text-center"
+                           (change)="updateQuantity(item._id, $any($event.target).value)"
+                           onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                  </td>
+
+                  <!-- Total -->
+                  <td class="fw-semibold">${{ (item.product?.price || 0) * item.quantity }}</td>
+
+                  <!-- Action -->
+                  <td>
+                    <button class="btn btn-sm btn-outline-danger" (click)="removeItem(item._id)">
+                      <i class="bi bi-trash"></i> Remove
+                    </button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Summary -->
+        <div class="d-flex justify-content-between align-items-center mt-4">
+          <h4 class="fw-bold">Total Price:
+            <span class="text-primary">${{ totalPrice }}</span>
+          </h4>
+          <button class="btn btn-lg btn-primary px-4" (click)="checkout()">
+            Checkout
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+</div>

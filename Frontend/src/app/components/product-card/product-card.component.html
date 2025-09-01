@@ -1,0 +1,38 @@
+<div class="card shadow-lg rounded-4 border-0 overflow-hidden p-3 text-center h-100 ">
+  <!-- Product Image -->
+  <div class="image ">
+    <img
+      class="img-fluid rounded-3"
+      style="height: 195px; object-fit: cover;"
+      [src]="Mydata.image"
+      alt="image" />
+  </div>
+
+  <!-- Product Info -->
+  <h5 class="fw-bold text-dark">{{ Mydata.name }}</h5>
+  <h4 class="text-success fw-semibold">{{ Mydata.price }}$</h4>
+  <p class="text-muted small">{{ Mydata.description }}</p>
+
+  <!-- Admin Section -->
+  @if(isAdmin()){
+    <h6 class="text-secondary">Stock: <span class="fw-semibold">{{ Mydata.stock }}</span></h6>
+
+    <div class="d-flex justify-content-center gap-2 mt-3">
+      <button class="btn btn-outline-primary btn-sm px-3"
+              [routerLink]="['/products/updateProduct', Mydata._id]">
+        ✏️ Edit
+      </button>
+      <button class="btn btn-outline-danger btn-sm px-3"
+              (click)="deleteProduct(Mydata._id)">
+        🗑️ Delete
+      </button>
+    </div>
+  }
+  <!-- User Section -->
+  @else {
+    <button class="btn btn-success btn-lg w-100 "
+            (click)="addToCart(Mydata._id)">
+      🛒 Add to Cart
+    </button>
+  }
+</div>

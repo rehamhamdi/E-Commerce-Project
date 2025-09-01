@@ -1,0 +1,90 @@
+<div class="w-100 min-vh-100 d-flex align-items-center justify-content-center bg-white">
+  <div class="w-75" style="max-width: 500px;">
+    <div class="card border-0 shadow rounded-4 bg-white">
+      <div class="card-body p-5">
+        <!-- Heading -->
+        <h3 class="text-center mb-4 fw-bold text-dark">
+          Create Your Account
+        </h3>
+
+        <form [formGroup]="register" (ngSubmit)="sendData()">
+          <!-- Name -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Name</label>
+            <input
+              formControlName="name"
+              class="form-control form-control-lg"
+              type="text"
+              placeholder="Enter your full name"
+            />
+            @if (register.controls.name.touched && register.controls.name.invalid) {
+              <small class="text-danger">Name is required.</small>
+            }
+          </div>
+
+          <!-- Age -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Age</label>
+            <input
+              formControlName="age"
+              class="form-control form-control-lg"
+              type="number"
+              placeholder="Enter your age"
+            />
+            @if (register.controls.age.touched && register.controls.age.invalid) {
+              <small class="text-danger">Age is required</small>
+            }
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Email</label>
+            <input
+              formControlName="email"
+              class="form-control form-control-lg"
+              type="email"
+              placeholder="example@email.com"
+            />
+            @if (register.controls.email.touched && register.controls.email.invalid) {
+              <small class="text-danger">Email is required.</small>
+            }
+          </div>
+
+          <!-- Password -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Password</label>
+            <input
+              formControlName="password"
+              class="form-control form-control-lg"
+              type="password"
+              placeholder="Enter your password"
+            />
+            @if (register.controls.password.touched && register.controls.password.invalid) {
+              <small class="text-danger">Password must be at least 5 characters.</small>
+            }
+          </div>
+
+          <!-- Error Message -->
+          @if (errorMsg) {
+            <div class="alert alert-danger mt-3">{{ errorMsg }}</div>
+          }
+
+          <!-- Button -->
+          <div class="d-grid mt-4">
+            <button [disabled]="register.invalid"class="btn btn-primary btn-lg rounded-3">
+              Register
+            </button>
+          </div>
+
+          <!-- Extra Link -->
+          <div class="text-center mt-3">
+            <small class="text-muted">
+              Already have an account?
+              <a routerLink="/login" class="fw-semibold text-dark">Login</a>
+            </small>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

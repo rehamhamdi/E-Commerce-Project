@@ -1,0 +1,71 @@
+<div class="container mt-5 mb-3">
+  <!-- Title -->
+  <div class="text-center mb-5">
+    <h2 class="fw-bold text-dark">📦 My Orders</h2>
+    <p class="text-muted">Track your recent purchases and their status</p>
+  </div>
+
+  <!-- No Orders -->
+  @if (myOrders!.length === 0) {
+    <div class="alert alert-info text-center py-4 rounded-3 shadow-sm">
+      <i class="bi bi-bag-x fs-3 d-block mb-2"></i>
+      No orders found.
+    </div>
+  }
+  @else {
+    <div class="row g-4">
+      @for (order of myOrders; track order._id) {
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 shadow-lg rounded-4 h-100 ">
+            <!-- Order Header -->
+            <div class="card-header bg-light d-flex justify-content-between align-items-center rounded-top-4">
+              <span class="fw-semibold text-dark">
+                Order <span class="text-primary">#{{ order._id.slice(-6) }}</span>
+              </span>
+              <span class="badge px-3 py-2 text-uppercase" [ngClass]="{
+                'bg-warning text-dark': order.status === 'pending',
+                'bg-success': order.status === 'delivered'
+              }">
+                {{ order.status || 'pending' }}
+              </span>
+            </div>
+
+            <!-- Order Body -->
+            <div class="card-body ">
+              <!-- Date -->
+              <div class="mb-3 small text-muted">
+                <i class="bi bi-calendar-event me-2"></i>
+                {{ order.createdAt }}
+              </div>
+
+              <!-- Items -->
+              <ul class="list-group list-group-flush mb-3">
+                
+                <h5>Items: </h5>
+                  @for (item of order.cartItems; track item.productId ) {
+                  <li class="list-group-item d-flex align-items-center justify-content-between border-0 px-0">
+                    <div class="d-flex align-items-center">
+                      <span class="fw-semibold">{{ item.productId?.name }}</span>
+                    </div>
+                    <span class="text-muted">x{{ item.quantity }}</span>
+                    <span class="fw-bold text-primary">
+                      <span>${{ ((item.productId?.price || 0) * item.quantity).toFixed(2) }}</span>
+                    </span>
+                  </li>
+                }
+              </ul>
+
+              <!-- Total -->
+              <div class="d-flex justify-content-between align-items-center border-top pt-3">
+                <span class="fw-bold text-dark">Total:</span>
+                <span class="fs-5 fw-bold text-success">
+                  ${{ order.totalPrice.toFixed(2) || '0.00' }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

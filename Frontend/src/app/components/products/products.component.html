@@ -1,0 +1,24 @@
+<div class="container py-4">
+  <!-- Admin button -->
+  @if(isAdmin()) {
+    <div class="d-flex justify-content-lg-start mb-4">
+      <button class="btn btn-success shadow-sm" routerLink="addProduct">
+        <i class="bi bi-plus-circle me-2"></i> Add New Product
+      </button>
+    </div>
+  }
+
+  <!-- Products grid -->
+  <div class="row g-4">
+    @for (product of products; track product._id) {
+      <div class="col-sm-6 col-md-4 d-flex ">
+        <app-product-card
+          class="w-100 h-100"
+          [Mydata]="product"
+          (productDeleted)="onProductDeleted()"
+        >
+        </app-product-card>
+      </div>
+    }
+  </div>
+</div>
